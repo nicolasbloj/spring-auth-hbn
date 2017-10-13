@@ -3,7 +3,8 @@ package com.auth0.samples.authapi.user;
 
 import static java.util.Collections.emptyList;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,9 +13,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
+  @Resource
   private ApplicationUserRepository applicationUserRepository;
 
-  @Autowired
+
   public UserDetailsServiceImpl(ApplicationUserRepository applicationUserRepository) {
     this.applicationUserRepository = applicationUserRepository;
   }

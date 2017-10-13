@@ -1,12 +1,13 @@
 package com.auth0.samples.authapi.cfg;
 
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class[] {Config.class};
+    return new Class[] {WebSecurityConfig.class};
   }
 
 

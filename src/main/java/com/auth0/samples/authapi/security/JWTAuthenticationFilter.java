@@ -28,11 +28,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
   private AuthenticationManager authenticationManager;
 
   public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
     this.authenticationManager = authenticationManager;
   }
+
 
   @Override
   public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
