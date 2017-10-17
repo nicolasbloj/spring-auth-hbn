@@ -1,3 +1,16 @@
-com/auth0/samples/authapi/cfg/Config.class
+com/auth0/samples/authapi/user/UserDetailsServiceImpl.class
+com/auth0/samples/authapi/security/WebSecurityConfig.class
+com/auth0/samples/authapi/user/ApplicationUserRepository.class
+com/auth0/samples/authapi/user/UserController.class
+com/auth0/samples/authapi/task/TaskRepositoryImpl.class
+com/auth0/samples/authapi/cfg/AppConfig.class
+com/auth0/samples/authapi/user/ApplicationUserRepositoryImpl.class
+com/auth0/samples/authapi/user/ApplicationUser.class
 com/auth0/samples/authapi/cfg/Initializer.class
 com/auth0/samples/authapi/task/TaskController.class
+com/auth0/samples/authapi/security/JWTAuthenticationFilter.class
+com/auth0/samples/authapi/security/SecurityConstants.class
+com/auth0/samples/authapi/task/TaskRepository.class
+com/auth0/samples/authapi/security/WeSecurityInitializer.class
+com/auth0/samples/authapi/task/Task.class
+com/auth0/samples/authapi/security/JWTAuthorizationFilter.class
