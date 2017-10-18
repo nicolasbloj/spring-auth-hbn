@@ -39,6 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .addFilter(new JWTAuthenticationFilter(authenticationManager()))
         .addFilter(new JWTAuthorizationFilter(authenticationManager()));
   }
+  // entender los pasos.
+  // advance rest control una vez enviado el token no me exige mandarlo de nuevo
 
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -52,12 +54,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     return source;
   }
 
-
-
-  @Bean
-  public BCryptPasswordEncoder bCryptPasswordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
 
 }
 

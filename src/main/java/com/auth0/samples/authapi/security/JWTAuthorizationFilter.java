@@ -5,6 +5,7 @@ import static com.auth0.samples.authapi.security.SecurityConstants.SECRET;
 import static com.auth0.samples.authapi.security.SecurityConstants.TOKEN_PREFIX;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -29,6 +30,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
       FilterChain chain) throws IOException, ServletException {
     String header = req.getHeader(HEADER_STRING);
 
+
+    System.out.println("AUTHORIZATION HEADER " + header);
+
     if (header == null || !header.startsWith(TOKEN_PREFIX)) {
       chain.doFilter(req, res);
       return;
@@ -45,13 +49,16 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
   // Siempre devolvera el mismo token ?
   private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
     String token = request.getHeader(HEADER_STRING);
+
+    System.out.println("AUTHORIZATION TOKEN " + token);
+
     if (token != null) {
       // parse the token.
       String user = Jwts.parser().setSigningKey(SECRET.getBytes())
           .parseClaimsJws(token.replace(TOKEN_PREFIX, "")).getBody().getSubject();
 
       if (user != null) {
-        return new UsernamePasswordAuthenticationToken(user, null); // array
+        return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>()); // array
       }
       return null;
     }

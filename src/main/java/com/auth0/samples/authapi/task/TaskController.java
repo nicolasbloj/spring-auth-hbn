@@ -28,7 +28,7 @@ public class TaskController {
     taskRepository.save(task);
   }
 
-  @GetMapping
+  @GetMapping("/")
   public List<Task> getTasks() {
     return taskRepository.findAll();
   }

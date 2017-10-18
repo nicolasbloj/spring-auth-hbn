@@ -13,11 +13,13 @@ public class ApplicationUserRepositoryImpl implements ApplicationUserRepository 
 
   @Override
   public ApplicationUser findByUsername(String username) {
+    System.out.println("SIZE LIST : " + list.size());
     for (ApplicationUser user : list) {
       if (user.getUsername().equals(username)) {
         return user;
       }
     }
+    System.out.println("RETURN NULL");
     return null;
   }
 

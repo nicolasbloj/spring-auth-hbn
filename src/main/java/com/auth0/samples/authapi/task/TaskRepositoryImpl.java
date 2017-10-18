@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 public class TaskRepositoryImpl implements TaskRepository {
 
   static List<Task> list = new ArrayList<Task>();
+  static int x = 1;
+
 
   @Override
   public void save(Task task) {
@@ -17,6 +19,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
   @Override
   public List<Task> findAll() {
+    list.add(new Task("tarea " + x++));
     return list;
   }
 

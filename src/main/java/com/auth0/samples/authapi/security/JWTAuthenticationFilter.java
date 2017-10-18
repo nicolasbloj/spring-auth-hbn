@@ -6,6 +6,7 @@ import static com.auth0.samples.authapi.security.SecurityConstants.SECRET;
 import static com.auth0.samples.authapi.security.SecurityConstants.TOKEN_PREFIX;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.FilterChain;
@@ -43,8 +44,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
       ApplicationUser creds =
           new ObjectMapper().readValue(req.getInputStream(), ApplicationUser.class);
 
-      return authenticationManager.authenticate(
-          new UsernamePasswordAuthenticationToken(creds.getUsername(), creds.getPassword()));
+      return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+          creds.getUsername(), creds.getPassword(), new ArrayList<>()));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -58,5 +59,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
         .signWith(SignatureAlgorithm.HS512, SECRET.getBytes()).compact();
     res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+
+
+    System.out.println("AUTHENTICATION - TOKEN " + token);
+
+
   }
 }
